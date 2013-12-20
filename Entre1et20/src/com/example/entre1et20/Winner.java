@@ -17,7 +17,7 @@ import com.google.appengine.api.datastore.Query;
 public class Winner  extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
-		String winners ="Les gagnants sont : ";
+		String winners ="";
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
@@ -32,11 +32,7 @@ public class Winner  extends HttpServlet{
         //Lecture des résultats et traitement
         while(entities.hasNext() && k < 5){
                 entity = entities.next();
-                if(k==0){
-                	winners += entity.getProperty("name");
-                }else{
-                	winners += ", " + entity.getProperty("name");
-                }
+                winners += "<li>" + entity.getProperty("name") +"</li>";
                 k++;
         }
         

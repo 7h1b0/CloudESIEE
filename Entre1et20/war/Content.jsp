@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,7 +10,7 @@
 	</head>
 	<body>
 		<section>
-			<h1>Perdu !</h1>
+			<h1><%=request.getAttribute("titre")%></h1>
 			<a href="/">Réessayer</a>
 		</section>
 	</body>

@@ -10,7 +10,9 @@
 	</head>
 	<body>
 		<header>
+			<a href="">Accueil</a>
 			<a href="/winner">Gagnant</a>
+			<a href="">Règles</a>
 			<a href="">A Propos</a>
 			<a href="">Github</a>
 		</header>
@@ -19,7 +21,7 @@
 				<form action="/action" method="post">
 					<input type="number" name="newNumber"><button><img src="arrow.png" alt="arrow"></button>
 				</form>
-				<p>Estimez la valeur des nombres proposés avant vous, et tentez de deviner leur moyenne.</p>
+				<!--<p>Estimez la valeur des nombres proposés avant vous, et tentez de deviner leur moyenne.</p>-->
 				<p><%=request.getAttribute("propositions")%></p>
 		</section>
 	</body>

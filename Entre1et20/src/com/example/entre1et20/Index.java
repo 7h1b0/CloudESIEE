@@ -15,7 +15,7 @@ import com.google.appengine.api.datastore.Query;
 @SuppressWarnings("serial")
 public class Index extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		String propositions ="Propositions Aléatoires : "; // String afficher par le JSP index
+		String propositions ="Propositions : "; // String afficher par le JSP index
 		//String init_moyenne = "5"; //Parce que Google fait n'importe quoi et que ce magnifique int se transforme en LONG dans la base de donné et que le cast d'un long en int marche pas sans que Eclipse 
 		
 		
