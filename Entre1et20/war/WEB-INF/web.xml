@@ -6,7 +6,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet>
 		<servlet-name>Action</servlet-name>
-		<servlet-class>com.example.entre1et20.Entre1et20Servlet</servlet-class>
+		<servlet-class>com.example.entre1et20.Post</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Action</servlet-name>
@@ -22,10 +22,19 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/calcul</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>Winner</servlet-name>
+		<servlet-class>com.example.entre1et20.Add</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Winner</servlet-name>
+		<url-pattern>/add</url-pattern>
+	</servlet-mapping>
+	
 	
 	<servlet>
 		<servlet-name>Index</servlet-name>
-		<servlet-class>com.example.entre1et20.Home</servlet-class>
+		<servlet-class>com.example.entre1et20.Index</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Index</servlet-name>
