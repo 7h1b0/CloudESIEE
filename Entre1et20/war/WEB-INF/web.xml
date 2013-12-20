@@ -40,6 +40,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/winner</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>Restore</servlet-name>
+		<servlet-class>com.example.entre1et20.Restore</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Restore</servlet-name>
+		<url-pattern>/restore</url-pattern>
+	</servlet-mapping>
+	
 	
 	<servlet>
 		<servlet-name>Index</servlet-name>

@@ -2,6 +2,7 @@ package com.example.entre1et20;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -30,7 +31,7 @@ public class Post extends HttpServlet {
 		 
 		 if(vNombre < 1 || vNombre > 20 ){    
 		        try {
-		                req.setAttribute("titre", "Merci d'entré un nombre entre 1 et 20");
+		                req.setAttribute("titre", "Merci d'entrer un nombre entre 1 et 20");
 		                getServletContext().getRequestDispatcher("/Content.jsp").forward(req, resp);
 		        } catch (ServletException e) {
 		                e.printStackTrace();
@@ -41,7 +42,7 @@ public class Post extends HttpServlet {
 			 
 			 //On place la proposition dans la DB AVANT d'appeler la queue -- Pourtant ça pose probleme ...
 			 Entity vEntiteNombre = new Entity("Nombre");
-			 vEntiteNombre.setProperty("number", vStrNumber);
+			 vEntiteNombre.setProperty("number", vNombre);
 			 datastore.put(vEntiteNombre);
 			 
 			 //Preparation de la requete
@@ -59,9 +60,13 @@ public class Post extends HttpServlet {
 		      
 		      if((long) vNombre == vMoyenne){ //Le joueur gagne
 		    	  resp.sendRedirect("win.html");
+		    	  Queue queue = QueueFactory.getDefaultQueue();
+				  queue.add(TaskOptions.Builder.withUrl("/restore").method(Method.POST)); // Appel de la queue qui va remplacer la base de donnée
+				  queue.add(TaskOptions.Builder.withUrl("/calcul").method(Method.POST)); // Appel de la queue qui va re-calculer la moyenne
+				  
 		      } else{ // Le joueur perd
 		    	  Queue queue = QueueFactory.getDefaultQueue();
-				  queue.add(TaskOptions.Builder.withUrl("/calcul").method(Method.POST));
+				  queue.add(TaskOptions.Builder.withUrl("/calcul").method(Method.POST)); // Appel de la queue qui va re-calculer la moyenne
 				  
 				  //Envoi des résultats à la JSP
 			        try {
@@ -70,6 +75,7 @@ public class Post extends HttpServlet {
 			        } catch (ServletException e) {
 			                e.printStackTrace();
 			        }
+			   
 		      }   // if-else  
 		} // else condition vNombre
 	 }

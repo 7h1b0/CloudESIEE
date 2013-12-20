@@ -22,7 +22,7 @@ public class Calcul extends HttpServlet{
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		int k=0;
-		int vSomme = 0;
+		long vSomme = 0;
 		
 		//Lecture de la base de donnée contenant les propositions !
 		Query query = new Query("Nombre");   
@@ -34,13 +34,12 @@ public class Calcul extends HttpServlet{
        //Lecture des résultats et traitement
        while(entities.hasNext()){
                 entity = entities.next();
-                vSomme += Integer.parseInt( (String)entity.getProperty("number")); // Marche
+                vSomme += (long) entity.getProperty("number");
                 k++;
        }
-       System.out.println(k+ " " +vSomme);
        
        //Calcul de la moyenne
-       int vMoyenne = vSomme / k ; // Comme c'est un int, on fait une division entiere;		   
+       long vMoyenne = Math.round(vSomme / k) ; // divsion + arrondi à l'entier   
 	  
        //Récupération de l'entité contenant la moyenne
        Key moyenneKey = KeyFactory.createKey("Moyenne", "id");

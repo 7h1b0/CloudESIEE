@@ -21,19 +21,17 @@ public class Winner  extends HttpServlet{
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
-		//Appel de la base de donnée NOSQL Nombre
+		//Appel de la base de donnée NOSQL Winners
         Query query = new Query("Winner");
       
         PreparedQuery pq = datastore.prepare(query);
         Iterator<Entity> entities = pq.asIterable().iterator();
         Entity entity = null;
-       
-        int k = 0;
-        //Lecture des résultats et traitement
-        while(entities.hasNext() && k < 5){
+      
+        //Lecture des résultats
+        while(entities.hasNext()){
                 entity = entities.next();
                 winners += "<li>" + entity.getProperty("name") +"</li>";
-                k++;
         }
         
       //Envoi des résultats à la JSP
