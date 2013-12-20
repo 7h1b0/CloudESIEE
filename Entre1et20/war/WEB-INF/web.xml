@@ -23,12 +23,21 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>Winner</servlet-name>
+		<servlet-name>Win</servlet-name>
 		<servlet-class>com.example.entre1et20.Add</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Winner</servlet-name>
+		<servlet-name>Win</servlet-name>
 		<url-pattern>/add</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Winner</servlet-name>
+		<servlet-class>com.example.entre1et20.Winner</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Winner</servlet-name>
+		<url-pattern>/winner</url-pattern>
 	</servlet-mapping>
 	
 	

@@ -15,7 +15,7 @@ import com.google.appengine.api.datastore.Query;
 @SuppressWarnings("serial")
 public class Index extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		String propositions ="<p>Propositions Aléatoires : "; // String afficher par le JSP index
+		String propositions ="Propositions Aléatoires : "; // String afficher par le JSP index
 		//String init_moyenne = "5"; //Parce que Google fait n'importe quoi et que ce magnifique int se transforme en LONG dans la base de donné et que le cast d'un long en int marche pas sans que Eclipse 
 		
 		
@@ -41,27 +41,6 @@ public class Index extends HttpServlet{
                 }
                 k++;
         }
-        
-      //Appel de la base de donnée NOSQL Gagnant
-        query = new Query("Winner");
-      
-        pq = datastore.prepare(query);
-        entities = pq.asIterable().iterator();
-        entity = null;
-       
-        propositions += "</p><p>Gagnants : ";
-        k = 0;
-        //Lecture des résultats et traitement
-        while(entities.hasNext() && k < 5){
-                entity = entities.next();
-                if(k==0){
-                	propositions += entity.getProperty("name");
-                }else{
-                	propositions += ", " + entity.getProperty("name");
-                }
-                k++;
-        }
-        propositions += "</p>";
        
        //Envoi des résultats à la JSP
         if(entity != null){    
