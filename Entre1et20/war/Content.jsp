@@ -9,9 +9,11 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 	</head>
 	<body>
-		<section>
-			<h1><%=request.getAttribute("titre")%></h1>
-			<a href="/">Réessayer</a>
-		</section>
+		<div id="content">
+			<section>
+				<h1><%=request.getAttribute("titre")%></h1>
+				<a href="/">Réessayer</a>
+			</section>
+		</div>
 	</body>
 </html>
