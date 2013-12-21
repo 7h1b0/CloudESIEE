@@ -27,6 +27,8 @@ public class Post extends HttpServlet {
          
 		 String vStrNumber = req.getParameter("newNumber"); // Retourne forcement un String
 		 int vNombre = Integer.parseInt(vStrNumber);
+		 vNombre = Math.round(vNombre); //Si un joueur rentre un nombre à virgule, on arrondi
+		 System.out.println(vNombre);
 		 long vMoyenne = 0;
 		 
 		 if(vNombre < 1 || vNombre > 20 ){    

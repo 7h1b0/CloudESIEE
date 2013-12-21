@@ -9,20 +9,31 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 	</head>
 	<body>
-		<header>
-			<a href="">Accueil</a>
-			<a href="/winner">Gagnant</a>
-			<a href="">Règles</a>
-			<a href="">A Propos</a>
-			<a href="">Github</a>
-		</header>
-		<section>
-				<h1>Entre 1 et 20</h1>
-				<form action="/action" method="post">
-					<input type="number" name="newNumber"><button><img src="IMG/arrow.png" alt="arrow"></button>
-				</form>
-				<!--<p>Estimez la valeur des nombres proposés avant vous, et tentez de deviner leur moyenne.</p>-->
-				<p><%=request.getAttribute("propositions")%></p>
-		</section>
+		<nav>
+			<a href="javascript:;" class="close"><img src="IMG/close.png" alt="close"></a>
+       		<ul>
+	            <li><a href="/">Accueil</a></li>
+				<li><a href="/winner">Gagnant</a></li>
+				<li><a href="about.html">Règles</a></li>
+				<li><a href="about.html">A Propos</a></li>
+				<li><a href="https://github.com/7h1b0/CloudESIEE">Github</a></li>
+        	</ul>
+		</nav>
+
+		<div id="content">
+			<a href="javascript:;" class="open"><img src="IMG/menu.png" alt="menu"></a>
+
+			<section>
+					<h1>Entre 1 et 20</h1>
+					<form action="/action" method="post">
+						<input type="number" name="newNumber"><button><img src="IMG/arrow.png" alt="arrow"></button>
+					</form>
+					<p><%=request.getAttribute("propositions")%></p>
+			</section>
+		</div>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js.js"></script>
+
 	</body>
 </html>

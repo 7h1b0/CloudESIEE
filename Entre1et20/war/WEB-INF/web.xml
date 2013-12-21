@@ -49,6 +49,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/restore</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>Initialisation</servlet-name>
+		<servlet-class>com.example.entre1et20.Init</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Initialisation</servlet-name>
+		<url-pattern>/init</url-pattern>
+	</servlet-mapping>
+	
 	
 	<servlet>
 		<servlet-name>Index</servlet-name>
