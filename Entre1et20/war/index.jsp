@@ -16,7 +16,6 @@
 				<li><a href="/winner">Gagnant</a></li>
 				<li><a href="about.html">Règles</a></li>
 				<li><a href="about.html">A Propos</a></li>
-				<li><a href="https://github.com/7h1b0/CloudESIEE">Github</a></li>
         	</ul>
 		</nav>
 
