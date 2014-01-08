@@ -15,22 +15,18 @@ import com.google.appengine.api.datastore.Query;
 @SuppressWarnings("serial")
 public class Index extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		String propositions ="Propositions : "; // String afficher par le JSP index
-		//String init_moyenne = "5"; //Parce que Google fait n'importe quoi et que ce magnifique int se transforme en LONG dans la base de donné et que le cast d'un long en int marche pas sans que Eclipse 
-		
-		
-		//Ou comment se peter les couilles avec un logiciel de manchot et un API de merde alors que le projet ce boucle en 5 min avec PHP et Javascript ...
+		String propositions ="Propositions : "; // String afficher par le JSP afficher à l'accueil du site
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	
-		//Appel de la base de donnée NOSQL Nombre
+		//Appel de la base de donnée NOSQL contenant les nombres/propositions
         Query query = new Query("Nombre");
       
         PreparedQuery pq = datastore.prepare(query);
         Iterator<Entity> entities = pq.asIterable().iterator();
         Entity entity = null;
        
-        int k = 0;
+        int k = 0; // Compteur servant à n'afficher que 5 propositions
         //Lecture des résultats et traitement
         while(entities.hasNext() && k < 5){
                 entity = entities.next();

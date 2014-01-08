@@ -5,12 +5,12 @@ xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet>
-		<servlet-name>Action</servlet-name>
+		<servlet-name>Post</servlet-name>
 		<servlet-class>com.example.entre1et20.Post</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Action</servlet-name>
-		<url-pattern>/action</url-pattern>
+		<servlet-name>Post</servlet-name>
+		<url-pattern>/post</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -23,11 +23,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>Win</servlet-name>
+		<servlet-name>Add</servlet-name>
 		<servlet-class>com.example.entre1et20.Add</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Win</servlet-name>
+		<servlet-name>Add</servlet-name>
 		<url-pattern>/add</url-pattern>
 	</servlet-mapping>
 	

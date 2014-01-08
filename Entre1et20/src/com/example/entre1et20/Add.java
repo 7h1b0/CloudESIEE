@@ -22,10 +22,12 @@ public class Add extends HttpServlet {
 		String vName = req.getParameter("name"); // Retourne forcement un String
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
+		//Ajout d'un Gagnant dans la base de donnée contenant les gagnants
 		Entity vEntiteNombre = new Entity("Winner");
 		vEntiteNombre.setProperty("name", vName);
 		datastore.put(vEntiteNombre);
 		
+		//Redirection vers l'accueil
 		resp.sendRedirect("/");
 	}
 }

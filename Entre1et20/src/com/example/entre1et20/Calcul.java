@@ -24,7 +24,7 @@ public class Calcul extends HttpServlet{
 		int k=0;
 		long vSomme = 0;
 		
-		//Lecture de la base de donnée contenant les propositions !
+		//Lecture de la base de donnée contenant les propositions
 		Query query = new Query("Nombre");   
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		PreparedQuery pq = datastore.prepare(query);

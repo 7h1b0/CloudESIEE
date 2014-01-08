@@ -15,6 +15,11 @@ import com.google.appengine.api.taskqueue.QueueFactory;
 import com.google.appengine.api.taskqueue.TaskOptions;
 import com.google.appengine.api.taskqueue.TaskOptions.Method;
 
+
+/*
+ * Classe qui sert à initialiser les bases de données pour que fonctionne correctement
+ * 
+ */
 public class Init extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		 
@@ -30,8 +35,9 @@ public class Init extends HttpServlet{
 			 datastore.put(vEntiteNombre);
 		}
 		
+		// Appel de la queue qui va calculer la moyenne des nombres générés précédements
 		Queue queue = QueueFactory.getDefaultQueue();
-		queue.add(TaskOptions.Builder.withUrl("/calcul").method(Method.POST)); // Appel de la queue qui va re-calculer la moyenne
+		queue.add(TaskOptions.Builder.withUrl("/calcul").method(Method.POST)); 
 	}
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {

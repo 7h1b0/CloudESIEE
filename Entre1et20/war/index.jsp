@@ -24,7 +24,7 @@
 
 			<section>
 					<h1>Entre 1 et 20</h1>
-					<form action="/action" method="post">
+					<form action="/post" method="post">
 						<input type="number" name="newNumber"><button><img src="IMG/arrow.png" alt="arrow"></button>
 					</form>
 					<p><%=request.getAttribute("propositions")%></p>

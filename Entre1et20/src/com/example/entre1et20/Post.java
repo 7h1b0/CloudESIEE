@@ -16,6 +16,10 @@ import com.google.appengine.api.taskqueue.QueueFactory;
 import com.google.appengine.api.taskqueue.TaskOptions;
 import com.google.appengine.api.taskqueue.TaskOptions.Method;
 
+/*
+ * Classe appelé après un post d'une proposition par le joueur
+ * 
+ */
 @SuppressWarnings("serial")
 public class Post extends HttpServlet {
 	
@@ -34,11 +38,12 @@ public class Post extends HttpServlet {
         
          public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
          
-	         String vStrNumber = req.getParameter("newNumber"); // Retourne forcement un String
-	         int vNombre = verif(vStrNumber); 
+	         String vStrNumber = req.getParameter("newNumber"); // On récupère la proposition du joueur 
+	         int vNombre = verif(vStrNumber);  // On vérifie les entrés utilisateurs -- pas de string, de boolean ..etc
 	         
 	         long vMoyenne = 0;
-                
+               
+	         //On vérifie que la proposition est bien entre 1 et 20
 	         if(vNombre < 1 || vNombre > 20 ){
                  try {
                 	 req.setAttribute("titre", "Merci d'entrer un nombre entier entre 1 et 20");
@@ -50,12 +55,12 @@ public class Post extends HttpServlet {
                 
                  DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
                 
-                 //On place la proposition dans la DB AVANT d'appeler la queue -- Pourtant ça pose probleme ...
+                 //On place la proposition dans la base de donnée
                  Entity vEntiteNombre = new Entity("Nombre");
                  vEntiteNombre.setProperty("number", vNombre);
                  datastore.put(vEntiteNombre);
                 
-                 //Preparation de la requete
+                 //On récupère la moyenne
                  Query query = new Query("Moyenne");
                  PreparedQuery pq = datastore.prepare(query);
                  Iterator<Entity> entities = pq.asIterable().iterator();
@@ -67,7 +72,7 @@ public class Post extends HttpServlet {
                           vMoyenne = (long) entity.getProperty("solution");
                  }
                 
-                
+                //On compare la moyenne avec la proposition
                  if((long) vNombre == vMoyenne){ //Le joueur gagne
                           resp.sendRedirect("win.html");
                           Queue queue = QueueFactory.getDefaultQueue();
