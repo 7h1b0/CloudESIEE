@@ -1,6 +1,7 @@
 package com.example.entre1et20;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Iterator;
 
 import javax.servlet.ServletException;
@@ -52,12 +53,15 @@ public class Post extends HttpServlet {
                 	 e.printStackTrace();
                  }
             } else{
-                
+                //Recuperation de la date
+            	Date date = new Date();
+            	
                  DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
                 
-                 //On place la proposition dans la base de donnée
+                 //On place la proposition dans la base de donnée -- Préférable de la placer ici : laisse le temps aux serveurs d'ajouter dans la base de donnée et ensuite avoir une moyenne correcte
                  Entity vEntiteNombre = new Entity("Nombre");
                  vEntiteNombre.setProperty("number", vNombre);
+                 vEntiteNombre.setProperty("date", date);
                  datastore.put(vEntiteNombre);
                 
                  //On récupère la moyenne

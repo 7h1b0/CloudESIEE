@@ -13,16 +13,22 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 
+/*
+ * Classe servant à affichier la liste des gagnants
+ */
 public class Winner  extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
 		String winners ="";
 		
+		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
 		//Appel de la base de donnée NOSQL Winners
         Query query = new Query("Winner");
+        query.addSort("date", SortDirection.DESCENDING); //On trie par date
       
         PreparedQuery pq = datastore.prepare(query);
         Iterator<Entity> entities = pq.asIterable().iterator();

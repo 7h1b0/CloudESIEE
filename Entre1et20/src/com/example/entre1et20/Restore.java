@@ -1,6 +1,7 @@
 package com.example.entre1et20;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -37,12 +38,14 @@ public class Restore extends HttpServlet{
        }
        
        //Remplissage de la base de donnée avec des nombres aléatoires
-		for(int i =0; i<10; i++){
+		for(int i =0; i<20; i++){
 			Random r = new Random();
-	        int valeur = 1 + r.nextInt(20 - 1);
+			Date date = new Date();
+	        int nombre = 1 + r.nextInt(20 - 1);
 	        
 	        Entity vEntiteNombre = new Entity("Nombre");
-			 vEntiteNombre.setProperty("number", valeur);
+			 vEntiteNombre.setProperty("number", nombre);
+			 vEntiteNombre.setProperty("date", date);
 			 datastore.put(vEntiteNombre);
 		}
 		

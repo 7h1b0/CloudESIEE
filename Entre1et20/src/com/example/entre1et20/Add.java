@@ -1,6 +1,7 @@
 package com.example.entre1et20;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,9 @@ import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 
+/*
+ * Classe servant à ajouter un gagnant dans la base de donnée des gagnants
+ */
 @SuppressWarnings("serial")
 public class Add extends HttpServlet {
 	
@@ -18,6 +22,7 @@ public class Add extends HttpServlet {
 	}
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		Date date = new Date();
 		
 		String vName = req.getParameter("name"); // Retourne forcement un String
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -25,6 +30,7 @@ public class Add extends HttpServlet {
 		//Ajout d'un Gagnant dans la base de donnée contenant les gagnants
 		Entity vEntiteNombre = new Entity("Winner");
 		vEntiteNombre.setProperty("name", vName);
+		vEntiteNombre.setProperty("date", date);
 		datastore.put(vEntiteNombre);
 		
 		//Redirection vers l'accueil
