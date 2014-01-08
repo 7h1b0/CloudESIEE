@@ -1,0 +1,110 @@
+@red : rgba(239, 71, 43, 0.8);
+@blue1 : #205983;
+@blue2 : #0A2742;
+@blue3 : #0d3153;
+
+.corners(@one;@two) {
+  border-radius: @one @two @two @one;
+}
+.box(){
+	box-sizing: border-box;
+}
+
+*{margin:0;padding:0;font-weight:normal;font-family: 'Oswald', sans-serif;color:white;}
+
+html,body{width:100%;height:100%;}
+body{display:table;background:radial-gradient(#205983, #0A2742);font-size:62.5%;overflow-x:hidden;
+	nav{		
+	    position:fixed;    
+	    top:0;
+	    bottom:0;
+	    right:-280px;
+	    height:100%;
+	    width:280px;height:100%;
+	    background:@blue2;
+	    z-index:9999;
+	    ul {
+		    padding:0;
+		    margin:0;
+		    list-style:none;
+		    color:white;
+		    li{
+		    	display:block;		    
+			    text-align:center;
+			    &:hover{
+			    	background:@blue3;  
+			    }
+			    a {
+			    	padding: 12px 0;
+    				color:white;
+				    text-decoration:none;
+				    font-size:1.5rem;
+				    display:block;
+				    border-bottom:1px solid @blue3;
+				}
+		    }
+		}
+		.close {
+		    display:block;
+		    background: @blue2;
+		    height:50px;
+		    width:50px;
+		    position:absolute;
+		    top:0;
+		    left:-50px;
+		    img{
+		    	display:block;
+		    	margin: 10px auto;
+		    	width:30px;height:30px;
+		    }
+		}
+	}
+
+	#content{ width:100%;height:100%;display:table;background:radial-gradient(@blue1, @blue2);
+		.open{
+			position:fixed;
+		    top:15px;
+		    right:40px;
+		    display:block;
+		    height:42px;
+		    width:42px;    
+		    img{
+		    	width:100%;height:100%;
+		    }
+		}
+		section{display:table-cell;vertical-align: middle;text-align:center;
+			#box{ background:rgba(0, 0, 0, 0.2); max-width: 500px;margin:20px auto;.corners(10px, 10px);padding: 0 0 20px 0;
+				h1{padding-bottom:20px;font-size:3rem;}
+				ul{
+					list-style: none;
+					li{
+						display: block;
+						text-align:center;
+						border-bottom:1px solid rgba(0, 0, 0, 0.1);
+						font-size: 1.2rem;
+						padding: 8px;
+						text-transform: uppercase;
+
+					}
+					li:first-child{
+							border-top: 1px solid rgba(0, 0, 0, 0.1);
+					}
+				}
+				p{
+					font-size: 1rem;
+					padding: 0 20px;
+				}
+			}	
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
