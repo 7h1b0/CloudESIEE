@@ -14,6 +14,7 @@
 
 html,body{width:100%;height:100%;}
 body{display:table;background:radial-gradient(#205983, #0A2742);font-size:62.5%;overflow-x:hidden;
+	
 	nav{		
 	    position:fixed;    
 	    top:0;
@@ -72,27 +73,35 @@ body{display:table;background:radial-gradient(#205983, #0A2742);font-size:62.5%;
 		    	width:100%;height:100%;
 		    }
 		}
-		section{display:table-cell;vertical-align: middle;text-align:center;
-			#box{ background:rgba(0, 0, 0, 0.2); max-width: 500px;margin:20px auto;.corners(10px, 10px);padding: 0 0 20px 0;
-				h1{padding-bottom:20px;font-size:3rem;}
+		section{display:table-cell;vertical-align: middle;
+			#box{ background:rgba(0, 0, 0, 0.2); max-width: 500px;margin:20px auto;.corners(10px, 10px);padding: 0 10px 20px 10px;.box();
+				h1{padding-bottom:20px;font-size:1.8rem;}
 				ul{
 					list-style: none;
+					display:table;
+					width:100%;
+					table-layout: fixed;
+					border-bottom:1px solid rgba(0, 0, 0, 0.1);
 					li{
-						display: block;
-						text-align:center;
-						border-bottom:1px solid rgba(0, 0, 0, 0.1);
+						display: table-cell;		
 						font-size: 1.2rem;
 						padding: 8px;
 						text-transform: uppercase;
+						text-align: right;
 
 					}
 					li:first-child{
-							border-top: 1px solid rgba(0, 0, 0, 0.1);
+						width:80%;
+						text-align: left;
+					}
+				}
+				#title{
+					li{
+						font-size: 1.5rem;
 					}
 				}
 				p{
-					font-size: 1rem;
-					padding: 0 20px;
+					font-size: 1.2rem;
 				}
 			}	
 		}

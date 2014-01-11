@@ -1,9 +1,13 @@
 package com.example.entre1et20;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.cache.Cache;
+import javax.cache.CacheException;
+import javax.cache.CacheManager;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
@@ -16,13 +20,30 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
 @SuppressWarnings("serial")
-public class Index extends HttpServlet{
+public class Play extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		String propositions ="Dernières Propositions : "; // String afficher par le JSP afficher à l'accueil du site
-		
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		//...
+	}
 	
-		//Appel de la base de donnée NOSQL contenant les nombres/propositions
+	 public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		 String pseudo = req.getParameter("pseudo");
+		 int value = Integer.parseInt(req.getParameter("value"));
+		 String propositions ="Dernières Propositions : "; // String afficher par le JSP
+		 
+		 
+		 
+		//On stocke le pseudo et son nombre d'essai dans le cache
+		try {
+			Cache cache = CacheManager.getInstance().getCacheFactory().createCache(Collections.emptyMap());			
+			cache.put(pseudo,value);		
+		} catch (CacheException e) {
+			e.printStackTrace();
+		}
+		 	 
+		
+		//Appel de la base de donnée NOSQL contenant les nombres/propositions	
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		
         Query query = new Query("Nombre");
         query.addSort("date", SortDirection.DESCENDING); //On trie par date
       
@@ -32,6 +53,7 @@ public class Index extends HttpServlet{
         Entity entity = null;
        
         int k = 0;
+        
         //Lecture des résultats et traitement
         while(ite.hasNext()){
                 entity = ite.next();
@@ -46,16 +68,13 @@ public class Index extends HttpServlet{
        //Envoi des résultats à la JSP
         if(entity != null){    
                 try {
-                        req.setAttribute("propositions", propositions);
-                        getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+                	req.setAttribute("pseudo",  pseudo);
+        			req.setAttribute("propositions", propositions);               
+                    getServletContext().getRequestDispatcher("/play.jsp").forward(req, resp);
                 } catch (ServletException e) {
-                        e.printStackTrace();
+                    e.printStackTrace();
                 }
         }
-	}
-	
-	 public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-         // ...
 	 }
 
 }

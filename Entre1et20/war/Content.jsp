@@ -12,7 +12,11 @@
 		<div id="content">
 			<section>
 				<h1><%=request.getAttribute("titre")%></h1>
-				<a href="/">Réessayer</a>
+				<form action="/play" method="post">
+					<input type="hidden" name="pseudo" value="<%=request.getAttribute("pseudo")%>" />
+					<input type="hidden" name="value" value="<%=request.getAttribute("value")%>" />
+					<button class="try">Réessayer</button>
+				</form>
 			</section>
 		</div>
 	</body>

@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,10 +12,8 @@
 		<div id="content">
 			<section>
 				<h1>Gagné !</h1>
-				<p>Entrez votre Pseudo :</p>
-				<form action="/add" method="post">
-					<input type="text" name="name"><button><img src="IMG/arrow.png" alt="arrow"></button>
-				</form>
+				<p>Bravo <%=request.getAttribute("pseudo")%>, tu as gagné en <%=request.getAttribute("value")%> coup.</p>
+				<a href="/">Re-Jouer</a>
 			</section>
 		</div>
 	</body>

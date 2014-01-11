@@ -6,11 +6,10 @@
 		 <meta charset="utf-8">
 		<title>Le juste Chiffre</title>
 		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="styleWin.css" />
+		<link rel="stylesheet" type="text/css" href="style.css" />
 	</head>
 	<body>
 		<nav>
-			<a href="javascript:;" class="close"><img src="IMG/close.png" alt="close"></a>
        		<ul>
 	            <li><a href="/">Accueil</a></li>
 				<li><a href="/winner">Gagnant</a></li>
@@ -20,19 +19,14 @@
 		</nav>
 
 		<div id="content">
-			<a href="javascript:;" class="open"><img src="IMG/menu.png" alt="menu"></a>
-			<section>	
-				<div id="box">
-					<ul id="title">
-						<li>Gagnant</li>
-						<li class="score">Score</li>
-					</ul>
-					<%=request.getAttribute("winners")%>
-				</div>
+			<section>
+					<h1>Entre 1 et 20</h1>
+					<form action="/post" method="post">
+						<input type="number" name="newNumber" placeholder="Propose un nombre"><button class="play"><img src="IMG/arrow.png" alt="arrow"></button>
+						<input type="hidden" name="pseudo" value="<%=request.getAttribute("pseudo")%>" />
+					</form>
+					<p><%=request.getAttribute("propositions")%></p>
 			</section>
 		</div>
-
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script type="text/javascript" src="js.js"></script>
 	</body>
 </html>
