@@ -43,8 +43,5 @@ public class Add extends HttpServlet {
 		vEntiteNombre.setProperty("date", date);
 		datastore.put(vEntiteNombre);
 		txn.commit();	
-		
-		//Redirection vers l'accueil
-		resp.sendRedirect("/");
 	}
 }
