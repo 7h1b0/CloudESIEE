@@ -16,6 +16,7 @@ import com.google.appengine.api.taskqueue.Queue;
 import com.google.appengine.api.taskqueue.QueueFactory;
 import com.google.appengine.api.taskqueue.TaskOptions;
 import com.google.appengine.api.taskqueue.TaskOptions.Method;
+import com.google.appengine.api.datastore.Transaction;
 
 /*
  * Classe appelé après un post d'une proposition par le joueur
@@ -57,12 +58,22 @@ public class Post extends HttpServlet {
             	Date date = new Date();
             	
                  DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-                
-                 //On place la proposition dans la base de donnée -- Préférable de la placer ici : laisse le temps aux serveurs d'ajouter dans la base de donnée et ensuite avoir une moyenne correcte
-                 Entity vEntiteNombre = new Entity("Nombre");
-                 vEntiteNombre.setUnindexedProperty("number", vNombre); //On n'indexe pas vNombre car pas besoin de le trié après = gain de performance
-                 vEntiteNombre.setProperty("date", date);
-                 datastore.put(vEntiteNombre);
+                 
+                 //Utilisation d'une transation pour aller plus vite
+                 Transaction txn = datastore.beginTransaction();             
+                 try {
+	                 Entity vEntiteNombre = new Entity("Nombre");
+	                 vEntiteNombre.setUnindexedProperty("number", vNombre); //On n'indexe pas vNombre car pas besoin de le trié après = gain de performance
+	                 vEntiteNombre.setProperty("date", date);
+	                 datastore.put(vEntiteNombre);
+	                 
+	                 txn.commit();
+                 } finally {
+            	    if (txn.isActive()) {
+            	        txn.rollback();
+            	    }
+                }
+
                 
                  //On récupère la moyenne
                  Query query = new Query("Moyenne");

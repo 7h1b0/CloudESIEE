@@ -2,6 +2,7 @@ package com.example.entre1et20;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
@@ -31,12 +33,13 @@ public class Winner  extends HttpServlet{
         query.addSort("date", SortDirection.DESCENDING); //On trie par date
       
         PreparedQuery pq = datastore.prepare(query);
-        Iterator<Entity> entities = pq.asIterable().iterator();
+        List<Entity> entities = pq.asList(FetchOptions.Builder.withLimit(5)); //On ne recupère que les 5 derniers gagnants
+        Iterator<Entity> ite = entities.iterator();
         Entity entity = null;
       
         //Lecture des résultats
-        while(entities.hasNext()){
-                entity = entities.next();
+        while(ite.hasNext()){
+                entity = ite.next();
                 winners += "<li>" + entity.getProperty("name") +"</li>";
         }
         

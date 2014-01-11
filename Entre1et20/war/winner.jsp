@@ -23,7 +23,7 @@
 			<a href="javascript:;" class="open"><img src="IMG/menu.png" alt="menu"></a>
 			<section>	
 				<div id="box">
-					<h1>Dernier Gagnant :</h1>
+					<h1>Derniers Gagnants :</h1>
 					<ul><%=request.getAttribute("winners")%></ul>
 				</div>
 			</section>
