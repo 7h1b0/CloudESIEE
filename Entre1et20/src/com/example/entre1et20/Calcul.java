@@ -46,7 +46,7 @@ public class Calcul extends HttpServlet{
        
        //Mise a jour de la valeur Moyenne
        Entity moyenneDB = new Entity("Moyenne","id", moyenneKey);
-	   moyenneDB.setProperty("solution", vMoyenne);
+	   moyenneDB.setUnindexedProperty("solution", vMoyenne); // On n'indexe pas la valeur de la moyenne car pas besoin de la trié ensuite = Gain de temps
 	   datastore.put(moyenneDB);	   
 	}
 }

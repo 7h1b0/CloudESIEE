@@ -33,7 +33,7 @@ public class Init extends HttpServlet{
 	        Date date = new Date();
 	        
 	        Entity vEntiteNombre = new Entity("Nombre");
-			 vEntiteNombre.setProperty("number", nombre);
+			 vEntiteNombre.setUnindexedProperty("number", nombre); //On n'indexe pas vNombre car pas besoin de le trié après = gain de performance
 			 vEntiteNombre.setProperty("date", date);
 			 datastore.put(vEntiteNombre);
 		}

@@ -60,7 +60,7 @@ public class Post extends HttpServlet {
                 
                  //On place la proposition dans la base de donnée -- Préférable de la placer ici : laisse le temps aux serveurs d'ajouter dans la base de donnée et ensuite avoir une moyenne correcte
                  Entity vEntiteNombre = new Entity("Nombre");
-                 vEntiteNombre.setProperty("number", vNombre);
+                 vEntiteNombre.setUnindexedProperty("number", vNombre); //On n'indexe pas vNombre car pas besoin de le trié après = gain de performance
                  vEntiteNombre.setProperty("date", date);
                  datastore.put(vEntiteNombre);
                 
@@ -87,7 +87,7 @@ public class Post extends HttpServlet {
                       	Queue queue = QueueFactory.getDefaultQueue();
                          queue.add(TaskOptions.Builder.withUrl("/calcul").method(Method.POST)); // Appel de la queue qui va re-calculer la moyenne
                                 
-                                 //Envoi des résultats à la JSP
+                         //Envoi des résultats à la JSP
                          try {
                         	 req.setAttribute("titre", "Perdu !");
                         	 getServletContext().getRequestDispatcher("/Content.jsp").forward(req, resp);

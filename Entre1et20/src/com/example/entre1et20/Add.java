@@ -29,7 +29,7 @@ public class Add extends HttpServlet {
 		
 		//Ajout d'un Gagnant dans la base de donnée contenant les gagnants
 		Entity vEntiteNombre = new Entity("Winner");
-		vEntiteNombre.setProperty("name", vName);
+		vEntiteNombre.setUnindexedProperty("name", vName); //On n'indexe pas le nom du joueur car pas besoin de le trié après = gain de performance
 		vEntiteNombre.setProperty("date", date);
 		datastore.put(vEntiteNombre);
 		

@@ -44,7 +44,7 @@ public class Restore extends HttpServlet{
 	        int nombre = 1 + r.nextInt(20 - 1);
 	        
 	        Entity vEntiteNombre = new Entity("Nombre");
-			 vEntiteNombre.setProperty("number", nombre);
+			 vEntiteNombre.setUnindexedProperty("number", nombre); //On n'indexe pas vNombre car pas besoin de le trié après = gain de performance
 			 vEntiteNombre.setProperty("date", date);
 			 datastore.put(vEntiteNombre);
 		}
