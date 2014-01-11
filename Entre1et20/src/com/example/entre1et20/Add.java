@@ -35,32 +35,14 @@ public class Add extends HttpServlet {
 		
 		//Utilisation d'une transaction pour ajouter un Gagnant
 		Transaction txn = datastore.beginTransaction();
-		try {
-			//Ajout d'un Gagnant dans la base de donnée contenant les gagnants
-			Entity vEntiteNombre = new Entity("Winner");
-			vEntiteNombre.setUnindexedProperty("name", vName); //On n'indexe pas le nom du joueur car pas besoin de le trié après = gain de performance
-			vEntiteNombre.setProperty("value", vValue);
-			vEntiteNombre.setProperty("date", date);
-			datastore.put(vEntiteNombre);
-			txn.commit();
-		}finally {
-    	    if (txn.isActive()) {
-    	        txn.rollback();
-    	    }
-        }
 		
-		try {
-			Cache cache = CacheManager.getInstance().getCacheFactory().createCache(Collections.emptyMap());
-			
-			String key = "test";
-			String value = "Je suis le meilleur";
-			cache.put(key,value);
-
-		} catch (CacheException e) {
-			e.printStackTrace();
-		}
-		
-		
+		//Ajout d'un Gagnant dans la base de donnée contenant les gagnants
+		Entity vEntiteNombre = new Entity("Winner");
+		vEntiteNombre.setUnindexedProperty("name", vName); //On n'indexe pas le nom du joueur car pas besoin de le trié après = gain de performance
+		vEntiteNombre.setProperty("value", vValue);
+		vEntiteNombre.setProperty("date", date);
+		datastore.put(vEntiteNombre);
+		txn.commit();	
 		
 		//Redirection vers l'accueil
 		resp.sendRedirect("/");
