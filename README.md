@@ -20,6 +20,12 @@ Il entre alors des nombres entre 1 et 20. Si sa proposition est égal à la moye
 
 ![Screenshot](https://raw.github.com/7h1b0/CloudESIEE/master/game.png "Game")
 
+### Caractéristiques
+* 3 Bases de données object ( Proposition, Gagnant et Moyenne )
+* 4 Files de taches ( Add, Restore, Calcul et Init ) 
+* Mémoire cache ( Contenant le score du joueur )
+* Multi-tenancy ( A venir )
+* Servlet - JSP
 
 ### Test en ligne
 Vous pouvez tester en ligne cette application à l'adresse suivante :
