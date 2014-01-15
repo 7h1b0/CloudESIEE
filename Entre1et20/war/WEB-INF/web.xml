@@ -58,6 +58,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/init</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>NamespaceFilter</servlet-name>
+		<servlet-class>com.example.entre1et20.NamespaceFilter</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NamespaceFilter</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>Play</servlet-name>

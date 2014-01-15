@@ -28,7 +28,7 @@ public class Play extends HttpServlet{
 	 public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		 String pseudo = req.getParameter("pseudo");
 		 int value = Integer.parseInt(req.getParameter("value"));
-		 String propositions ="Dernières Propositions : "; // String afficher par le JSP
+		 String propositions =""; // String afficher par le JSP
 		 
 		 
 		 
@@ -41,20 +41,20 @@ public class Play extends HttpServlet{
 		}
 		 	 
 		
-		//Appel de la base de donnée NOSQL contenant les nombres/propositions	
+		//Appel de la base de donnï¿½e NOSQL contenant les nombres/propositions	
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
         Query query = new Query("Nombre");
         query.addSort("date", SortDirection.DESCENDING); //On trie par date
       
         PreparedQuery pq = datastore.prepare(query);
-        List<Entity> entities = pq.asList(FetchOptions.Builder.withLimit(8)); //On ne recupère que les 8 premiers nombres
+        List<Entity> entities = pq.asList(FetchOptions.Builder.withLimit(8)); //On ne recupï¿½re que les 8 premiers nombres
         Iterator<Entity> ite = entities.iterator();
         Entity entity = null;
        
         int k = 0;
         
-        //Lecture des résultats et traitement
+        //Lecture des rï¿½sultats et traitement
         while(ite.hasNext()){
                 entity = ite.next();
                 if(k==0){
@@ -65,7 +65,7 @@ public class Play extends HttpServlet{
                 k++;
         }
        
-       //Envoi des résultats à la JSP
+       //Envoi des rï¿½sultats ï¿½ la JSP
         if(entity != null){    
                 try {
                 	req.setAttribute("pseudo",  pseudo);

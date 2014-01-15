@@ -25,7 +25,7 @@
 						<input type="number" name="newNumber" placeholder="Propose un nombre"><button class="play"><img src="IMG/arrow.png" alt="arrow"></button>
 						<input type="hidden" name="pseudo" value="<%=request.getAttribute("pseudo")%>" />
 					</form>
-					<p><%=request.getAttribute("propositions")%></p>
+					<p>Dernières propositions: <%=request.getAttribute("propositions")%></p>
 			</section>
 		</div>
 	</body>
