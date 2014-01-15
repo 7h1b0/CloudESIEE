@@ -24,7 +24,7 @@ Il entre alors des nombres entre 1 et 20. Si sa proposition est égal à la moye
 * 3 Bases de données object ( Proposition, Gagnant et Moyenne )
 * 4 Files de taches ( Add, Restore, Calcul et Init ) 
 * Mémoire cache ( Contenant le score du joueur )
-* Multi-tenancy ( A venir )
+* Multi-tenancy
 * Servlet - JSP
 
 ### Test en ligne
