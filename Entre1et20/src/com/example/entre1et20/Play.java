@@ -27,6 +27,9 @@ public class Play extends HttpServlet{
 	
 	 public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		 String pseudo = req.getParameter("pseudo");
+		 if(pseudo.equals("")){
+			 pseudo ="Anonymous";
+		 }
 		 int value = Integer.parseInt(req.getParameter("value"));
 		 String propositions =""; // String afficher par le JSP
 		 
