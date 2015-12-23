@@ -26,8 +26,3 @@ Il entre alors des nombres entre 1 et 20. Si sa proposition est égal à la moye
 * Mémoire cache ( Contenant le score du joueur )
 * Multi-tenancy
 * Servlet - JSP
-
-### Test en ligne
-Vous pouvez tester en ligne cette application à l'adresse suivante :
-
-http://onetwenty-esiee.appspot.com/
